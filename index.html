@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ibragimov Ilyas — Front end dasturchi portfolio</title>
+<meta name="description" content="Ibragimov Ilyas — Xiva, 9-sinf o'quvchisi. Veb-dasturlash bilan shug'ullanaman. Loyihalarim, ko'nikmalarim va aloqa ma'lumotlari.">
+<meta name="theme-color" content="#0b6f6b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230b6f6b'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<script>
+try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}
+</script>
+<style>
+:root{
+  --bg:#f5f7f6;--surface:#fff;--ink:#11222b;--muted:#53656e;--line:#d5dedc;
+  --tile:#0f8f8a;--accent:#0b6f6b;--on-accent:#fff;--brick:#b4531f;
+  --display:"Unbounded","Trebuchet MS",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --max:1080px;
+}
+:root[data-theme="dark"]{
+  --bg:#0d1a22;--surface:#132530;--ink:#e8f0ef;--muted:#9db2b8;--line:#24404a;
+  --tile:#2fbdb4;--accent:#47d0c7;--on-accent:#07201f;--brick:#e8935a;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tile);outline-offset:3px;border-radius:4px}
+.wrap{width:min(var(--max),100% - 2.5rem);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:.5rem 1rem;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.logo{font-family:var(--display);font-weight:600;font-size:1.15rem;text-decoration:none}
+.logo span{color:var(--tile)}
+.nav{display:flex;gap:1.75rem}
+.nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink);border-color:var(--tile)}
+.tools{display:flex;gap:.5rem}
+.icon-btn{width:42px;height:42px;display:grid;place-items:center;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.icon-btn:hover{border-color:var(--tile)}
+.burger{display:none}
+.i-sun{display:none}
+[data-theme="dark"] .i-sun{display:block}
+[data-theme="dark"] .i-moon{display:none}
+
+/* hero */
+.hero{padding:clamp(3rem,8vw,6rem) 0 clamp(3.5rem,8vw,6rem)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.hello{color:var(--accent);font-weight:600;margin-bottom:.75rem}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,6.2vw,4.4rem);line-height:1.05;letter-spacing:-.02em}
+.role{margin-top:1.25rem;font-size:1.2rem;font-weight:600}
+.slogan{margin-top:.75rem;color:var(--muted);max-width:34em}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:.85rem 1.5rem;border-radius:12px;border:2px solid var(--accent);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{color:var(--accent)}
+
+/* arch (peshtoq) with tile pattern */
+.hero-visual{position:relative;justify-self:center;width:min(100%,340px)}
+.arch-back{position:absolute;inset:-18px -18px 0 18px;border-radius:999px 999px 0 0;background:var(--tile);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 60 60' fill='none' stroke='black' stroke-width='2.5'%3E%3Crect x='15' y='15' width='30' height='30'/%3E%3Crect x='15' y='15' width='30' height='30' transform='rotate(45 30 30)'/%3E%3Ccircle cx='30' cy='30' r='6'/%3E%3Cpath d='M0 0l15 15M60 0L45 15M0 60l15-15M60 60L45 45'/%3E%3C/svg%3E");
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 60 60' fill='none' stroke='black' stroke-width='2.5'%3E%3Crect x='15' y='15' width='30' height='30'/%3E%3Crect x='15' y='15' width='30' height='30' transform='rotate(45 30 30)'/%3E%3Ccircle cx='30' cy='30' r='6'/%3E%3Cpath d='M0 0l15 15M60 0L45 15M0 60l15-15M60 60L45 45'/%3E%3C/svg%3E")}
+.photo{position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;background:var(--accent);border-bottom:6px solid var(--brick);animation:rise .9s ease-out both}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.initials{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:7rem;color:var(--on-accent);z-index:-1}
+.photo{z-index:0}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* sections */
+.section{padding:clamp(3.5rem,8vw,5.5rem) 0}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em;line-height:1.15}
+.lead{color:var(--muted);margin-top:.75rem;max-width:40em}
+h3{font-size:1.2rem;line-height:1.3}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:1.5rem 3rem}
+.about-text{display:grid;gap:1rem;max-width:36em}
+.facts{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,1fr);margin-top:1.5rem;border-top:1px solid var(--line)}
+.facts div{padding:1.1rem 1rem 0 0}
+.facts dt{color:var(--muted);font-size:.9rem}
+.facts dd{font-weight:600;margin-top:.15rem}
+
+/* skills: tile meters */
+.skills{list-style:none;padding:0;margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem 3.5rem}
+.skill-head{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
+.tile{width:38px;height:38px;display:grid;place-items:center;border-radius:6px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:.85rem}
+.skill-head b{flex:1;font-weight:600}
+.skill-head em{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+.meter{height:14px;background:var(--line);-webkit-mask:repeating-linear-gradient(90deg,#000 0 calc(10% - 4px),transparent 0 10%);mask:repeating-linear-gradient(90deg,#000 0 calc(10% - 4px),transparent 0 10%)}
+.meter i{display:block;height:100%;width:var(--lvl);background:var(--tile)}
+
+/* projects: rows */
+.projects{margin-top:2.5rem;border-top:2px solid var(--ink)}
+.card{display:grid;grid-template-columns:200px 1fr;gap:1.5rem 2.5rem;padding:2rem 0;border-bottom:1px solid var(--line)}
+.thumb{aspect-ratio:4/3;border-radius:14px 14px 0 0;position:relative;overflow:hidden;display:grid;place-items:center}
+.t1{background:#0b6f6b}.t2{background:#b4531f}.t3{background:#2a4a8a}
+.mock{width:72%;display:grid;gap:8px}
+.mock span{height:14px;border-radius:4px;background:rgba(255,255,255,.88)}
+.mock span:nth-child(2){width:75%;opacity:.7}
+.mock span:nth-child(3){width:50%;opacity:.5}
+.tags{color:var(--muted);font-size:.92rem;margin-top:.2rem}
+.card dl{display:grid;grid-template-columns:5.5rem 1fr;gap:.5rem 1rem;margin-top:1.1rem}
+.card dt{font-weight:600;color:var(--accent)}
+.links{display:flex;gap:1.25rem;margin-top:1.25rem}
+.links a{font-weight:600;color:var(--accent);text-underline-offset:4px}
+.links a:hover{color:var(--brick)}
+
+/* timeline */
+.timeline{list-style:none;padding:0;margin-top:2.5rem;border-left:2px solid var(--tile);max-width:44em}
+.timeline li{position:relative;padding:0 0 2rem 1.75rem}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-8px;top:.45rem;width:14px;height:14px;background:var(--bg);border:3px solid var(--tile);transform:rotate(45deg)}
+.timeline time{font-weight:600;color:var(--accent);font-size:.95rem}
+.timeline p{color:var(--muted);margin-top:.25rem}
+
+/* contact */
+.contact{background:var(--accent);color:var(--on-accent)}
+.contact .lead{color:inherit;opacity:.9}
+.contact-list{list-style:none;padding:0;margin-top:2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.contact-list a{display:block;text-decoration:none;padding:1rem 1.25rem;border:2px solid color-mix(in srgb,var(--on-accent) 45%,transparent);border-radius:14px;font-weight:600;overflow-wrap:anywhere;transition:background .15s}
+.contact-list a:hover{background:color-mix(in srgb,var(--on-accent) 14%,transparent)}
+.contact-list span{display:block;font-weight:400;font-size:.9rem;opacity:.85}
+.contact :focus-visible{outline-color:var(--on-accent)}
+
+.site-footer{padding:1.75rem 0;color:var(--muted);font-size:.92rem}
+.site-footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.site-footer a{color:var(--accent);font-weight:600}
+
+/* responsive */
+@media (max-width:860px){
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .hero-visual{order:-1;width:min(70%,260px);justify-self:start;margin-left:18px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .skills,.contact-list{grid-template-columns:1fr}
+  .card{grid-template-columns:1fr}
+  .thumb{max-width:220px}
+}
+@media (max-width:760px){
+  .burger{display:grid}
+  .nav{position:absolute;left:0;right:0;top:64px;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1rem;display:none}
+  .nav.open{display:flex}
+  .nav a{padding:.8rem 0;border-bottom:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Asosiy qismga o'tish</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="#hero" aria-label="Ibragimov Ilyas — bosh sahifa">ilyas<span>.</span></a>
+    <nav id="menu" class="nav" aria-label="Asosiy menyu">
+      <a href="#about">Men haqimda</a>
+      <a href="#skills">Ko'nikmalar</a>
+      <a href="#projects">Loyihalar</a>
+      <a href="#education">Ta'lim</a>
+      <a href="#contact">Aloqa</a>
+    </nav>
+    <div class="tools">
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Qorong'i rejimni almashtirish">
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button id="burger" class="icon-btn burger" type="button" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section id="hero" class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="hello">Salom, men</p>
+        <h1>Ibragimov Ilyas</h1>
+        <p class="role">Front end dasturchi, 9-sinf o'quvchisi</p>
+        <p class="slogan">Oddiy g'oyani ishlaydigan, chiroyli va telefonda ham qulay saytga aylantiraman.</p>
+        <div class="actions">
+          <a class="btn btn-main" href="#projects">Loyihalarimni ko'rish</a>
+          <a class="btn btn-ghost" href="#contact">Menga yozing</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="arch-back" aria-hidden="true"></div>
+        <div class="photo">
+          <img src="./Neon Hacker Lair Portrait.png" alt="Ibragimov Ilyas portreti" width="360" height="440" onerror="this.remove()">
+          <span class="initials" aria-hidden="true">I</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="wrap about-grid">
+      <h2>Men haqimda</h2>
+      <div class="about-text">
+        <p>Men Xivada yashayman va 9-sinfda o'qiyman. Veb-dasturlash bilan ITXiva kurslarida shug'ullanaman: HTML, CSS va JavaScript yordamida o'z saytlarimni yarataman.</p>
+        <p>Menga g'oyani nol'dan ko'rinadigan, ishlaydigan natijaga aylantirish yoqadi. Har bir loyihada avval muammoni tushunaman, keyin eng sodda yechimni topaman.</p>
+        <p>Maqsadim — maktabni tugatgach, IT yo'nalishida o'qish va xalqaro loyihalarda ishlash. Hozir stajirovka va kichik freelance buyurtmalarga ochiqman.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Yosh</dt><dd>15</dd></div>
+        <div><dt>Shahar</dt><dd>Xiva, O'zbekiston</dd></div>
+        <div><dt>Tillar</dt><dd>O'zbek, rus, ingliz</dd></div>
+        <div><dt>Holat</dt><dd>Stajirovkaga ochiq</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="wrap">
+      <h2>Ko'nikmalar</h2>
+      <p class="lead">Har bir ko'nikma ostidagi plitkalar mening hozirgi darajamni ko'rsatadi.</p>
+      <ul class="skills">
+        <li style="--lvl:90%"><div class="skill-head"><span class="tile">H</span><b>HTML</b><em>90%</em></div><div class="meter"><i></i></div></li>
+        <li style="--lvl:85%"><div class="skill-head"><span class="tile">C</span><b>CSS</b><em>85%</em></div><div class="meter"><i></i></div></li>
+        <li style="--lvl:65%"><div class="skill-head"><span class="tile">JS</span><b>JavaScript</b><em>65%</em></div><div class="meter"><i></i></div></li>
+        <li style="--lvl:60%"><div class="skill-head"><span class="tile">Py</span><b>Python</b><em>60%</em></div><div class="meter"><i></i></div></li>
+        <li style="--lvl:70%"><div class="skill-head"><span class="tile">Gt</span><b>Git va GitHub</b><em>70%</em></div><div class="meter"><i></i></div></li>
+        <li style="--lvl:55%"><div class="skill-head"><span class="tile">Fg</span><b>Figma</b><em>55%</em></div><div class="meter"><i></i></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section alt">
+    <div class="wrap">
+      <h2>Loyihalar</h2>
+      <p class="lead">Har bir loyiha: muammo, yechim va natija.</p>
+      <div class="projects">
+        <article class="card">
+          <div class="thumb t1" aria-hidden="true"><div class="mock"><span></span><span></span><span></span></div></div>
+          <div>
+            <h3>Kundalik reja</h3>
+            <p class="tags">HTML, CSS, JavaScript</p>
+            <dl>
+              <dt>Muammo</dt><dd>Maktab vazifalarini daftarga yozib, ko'pincha yo'qotib qo'yardim.</dd>
+              <dt>Yechim</dt><dd>Vazifa qo'shish, belgilash va o'chirish mumkin bo'lgan sodda ilova.</dd>
+              <dt>Natija</dt><dd>Ma'lumotlar brauzerda saqlanadi, sahifa yangilansa ham yo'qolmaydi.</dd>
+            </dl>
+            <div class="links">
+              <a href="https://kundalik-reja.vercel.app" target="_blank" rel="noopener">Demo</a>
+              <a href="https://github.com/berk23019-glitch/me" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t2" aria-hidden="true"><div class="mock"><span></span><span></span><span></span></div></div>
+          <div>
+            <h3>Niqoblanish Sayt</h3>
+            <p class="tags">HTML, CSS (Grid, Flexbox)</p>
+            <dl>
+              <dt>Muammo</dt><dd>Niqoblanish sayti</dd>
+              <dt>Yechim</dt><dd>Diqqatga sazovor joylar va manzillar jamlangan responsiv sahifa.</dd>
+              <dt>Natija</dt><dd>Telefon va kompyuterda bir xil qulay ochiladi.</dd>
+            </dl>
+            <div class="links">
+              <a href="https://karimovarslon2009-cyber.github.io/niqoblash.uz/" target="_blank" rel="noopener">Demo</a>
+              <a href="https://github.com/karimovarslon2009-cyber/niqoblash.uz" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t3" aria-hidden="true"><div class="mock"><span></span><span></span><span></span></div></div>
+          <div>
+            <h3>Yoshlar UchunAmaliyot </h3>
+            <p class="tags">HTML, CSS, JavaScript</p>
+            <dl>
+              <dt>Muammo</dt><dd>So'mni dollar va yevroga tez hisoblash uchun qulay vosita yo'q edi.</dd>
+              <dt>Yechim</dt><dd>Summa kiritilganda natijani darhol ko'rsatadigan kalkulyator.</dd>
+              <dt>Natija</dt><dd>Hisoblash bir bosishda, xatosiz bajariladi.</dd>
+            </dl>
+            <div class="links">
+              <a href="https://doutov.github.io/AmaliyotUz/" target="_blank" rel="noopener">Demo</a>
+              <a href="https://github.com/doutov/AmaliyotUz" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <div class="wrap">
+      <h2>Ta'lim va yutuqlar</h2>
+      <ol class="timeline">
+        <li><time>2026</time><h3>Portfolio website kursi</h3><p>ITXiva: HTML, CSS, GitHub va Vercel orqali shaxsiy saytni internetga joyladim.</p></li>
+        <li><time>2025</time><h3>ITXiva — veb-dasturlash</h3><p>Dasturlash asoslari, HTML/CSS va JavaScript bo'yicha kurs.</p></li>
+        <li><time>2025</time><h3>Informatika fani olimpiadasi</h3><p>Maktab bosqichida qatnashdim va mantiqiy masalalarni yechish tajribasini oldim.</p></li>
+        <li><time>2024 — hozir</time><h3>Maktab, 9-sinf</h3><p>Aniq fanlarga, ayniqsa matematika va informatikaga qiziqaman.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <h2>Aloqa</h2>
+      <p class="lead">Loyiha, stajirovka yoki savol bo'lsa — yozing, tez javob beraman.</p>
+      <ul class="contact-list">
+        <li><a href="mailto:Berk23019@gmail.com"><span>Email</span>Berk23019@gmail.com</a></li>
+        <li><a href="https://t.me/pkpk087" target="_blank" rel="noopener"><span>Telegram</span>@pkpk087</a></li>
+        <li><a href="https://github.com/berk23019" target="_blank" rel="noopener"><span>GitHub</span>github.com/berk23019</a></li>
+        <li><a href="https://www.linkedin.com/in/sammakim" target="_blank" rel="noopener"><span>LinkedIn</span>linkedin.com/in/sammakim</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> Ibragimov Ilyas. Barcha huquqlar himoyalangan.</p>
+    <a href="#hero">Yuqoriga qaytish</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  document.getElementById("year").textContent=new Date().getFullYear();
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var n=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",n);
+    try{localStorage.setItem("theme",n);}catch(e){}
+  });
+  var b=document.getElementById("burger"),m=document.getElementById("menu");
+  function set(o){m.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Menyuni yopish":"Menyuni ochish");}
+  b.addEventListener("click",function(){set(!m.classList.contains("open"));});
+  m.addEventListener("click",function(e){if(e.target.tagName==="A")set(false);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false);});
+})();
+</script>
+</body>
+</html>
